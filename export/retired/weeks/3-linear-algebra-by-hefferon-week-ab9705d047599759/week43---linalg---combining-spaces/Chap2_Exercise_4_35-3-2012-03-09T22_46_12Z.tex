@@ -1,0 +1,41 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amssymb}
+
+\begin{document}
+
+\begin{center}Linear Algebra by Hefferon\\ Chapter 2, combining Subspaces\\ Exercise 4.35\end{center}
+%
+\noindent\\(a) $W_1 \cap  W_2 = \{    \left(\begin{array}{cc}0&0\\c&0\end{array}\right) | c \in \mathbb{R}   \} $, it has as basis $\langle \left(\begin{array}{cc}0&0\\1&0\end{array} \right) \rangle$, so dimension 1.\\
+$W_1 + W_2 = [ \{ \left(\begin{array}{cc}0&0\\c&d\end{array} \right) \} \cup \{ \left(\begin{array}{cc}0&b\\c&0\end{array} \right) \} ] =  \left(\begin{array}{cc}0&b\\c&d\end{array} \right) $,\\ it has as basis $\langle \left(\begin{array}{cc}0&1\\0&0\end{array}\right), \left(\begin{array}{cc}0&0\\1&0\end{array}\right), \left(\begin{array}{cc}0&0\\0&1\end{array}\right) \rangle$, so dimension 3.\\\\
+
+%
+\noindent(b) Lemma 1: The concatenation of the bases of $U$ and $W$ spans $U+W$.\\\\
+%
+Proof: $\langle \vec{\mu_1}, ...,\vec{\mu_j} \rangle$ be a basis of $U$ and $\langle \vec{\omega_1}, ...,\vec{\omega_p} \rangle$ be a basis of $W$. Let $\vec{v} \in [ U \cup W ] $, $\vec{v} = c1.\vec{u_1}+...+cm.\vec{u_m}+d1.\vec{w_1}+...+dn.\vec{w_n}$, so
+$\vec{v}=c1. ( \alpha_1.\vec{\mu_1}+...+\alpha_j.\vec{\mu_j}  )+...+d1. (\gamma_1.\vec{\omega_1}+...+\gamma_j.\vec{\omega_j} )$, so $\vec{v} = k1.\vec{\mu_1}+...+kj.\vec{\mu_j}+l1.\vec{\omega_1}+...+lp.\vec{\omega_p}$. so $v$ is a linear combination of basis vectors from $U$ and $W$.\hfill QED.\\
+(Basically, $\vec{v}$ is a linear combination of linear combinations.)
+%
+\\\\The concatenation of the expanded sequences is: $\langle \vec{\mu_1}, ...,\vec{\mu_j},  \vec{\beta_1}, ...,\vec{\beta_k},  \vec{\beta_1}, ...,\vec{\beta_k},  \vec{\omega_1}, ...,\vec{\omega_p}    \rangle$ spans $U+W$ by Lemma 1. We can easily turn it into a basis: the duplicate $\vec{\beta}$ vectors can be removed since they are linearly dependent on themselves, resulting in $\langle \vec{\mu_1}, ...,\vec{\mu_j},  \vec{\beta_1}, ...,\vec{\beta_k},  \vec{\omega_1}, ...,\vec{\omega_p}    \rangle$. The $\vec{\mu}$ and $\vec{\omega}$ vectors are linearly independent from $\vec{\beta}$ vectors.  and they are also independent of each other.\\\\
+%
+Proof: WLOG, assume $\vec{\mu_1}$ is linearly dependent on $\{ \vec{\omega_1},..,\vec{\omega_i} \}$, then $\vec{\mu_1} \in U \cap W$, then $\vec{\mu_1}$ is a linear combination of $\vec{\beta}$ vectors since they are the basis of the intersection, but then the basis of $U$, $\langle \vec{\mu_1}, ...,\vec{\mu_j},  \vec{\beta_1}, ...,\vec{\beta_k}   \rangle$ has linearly dependent vectors which is a contradiction.\hfill QED.\\
+
+%
+\noindent(c)  Let $\mu = \langle \vec{\mu_1}, ...,\vec{\mu_m} \rangle $ be a basis of $U$, it has dimension m.  $\omega = \langle \vec{\omega_1}, ...,\vec{\omega_m} \rangle $ be a basis of $W$, it has dimension n. $\beta = \langle \vec{\beta_1}, ...,\vec{\beta_k} \rangle $ be a basis of $U \cap W$, it has dimension k.\\
+Every vector in $U \cap W$ is spanned by both $\mu$ and $\omega$, so by the Exchange Lemma, we can replace some $\vec{\mu_x}$ and $\vec{\omega_y}$ by $\vec{\beta_1}$, obtaining two new bases that we call $\mu^1$ and $\omega^1$ signifying that they now include 1 basis vector from $\beta$.  \\
+By induction, we can replace all k vectors to get $\mu^k$ and $\omega^k$, we can be sure that we will keep finding non-trivial linear combinations for a vector $\vec{\beta_i}$ at step i, because both bases still span $\beta$ and  $\vec{\beta_i}$ is linearly indepent from any $\vec{\beta}$ vectors in the bases, so it must be dependent on the $\vec{\mu}$ and $\vec{\omega}$ remaining vectors.\\
+$\mu^k$ contains a count of $k$, $\vec{\beta}$ vectors and $(j=m-k)$, $\vec{\mu}$ vectors remaining, similary $\omega^k$ contains $(p=n-k)$, $\vec{\omega}$ vectors. \\\\ 
+With these new bases $\mu^k$ and $\omega^k$, the problem is now identical to problem (a). From (a) we know that $\langle \vec{\mu_1}, ...,\vec{\mu_j},  \vec{\beta_1}, ...,\vec{\beta_k},  \vec{\omega_1}, ...,\vec{\omega_p}    \rangle$ is a basis. It contains $j+k+p$ vectors, which is equal to $(j+k)+(p+k)-k=m+n-k$, so it's dimension $dim(U + W) = dim(U) + dim(W) - dim(U \cap W)$.\hfill QED. 
+\\\\%
+%%%%%%
+\begin{center}Exercise 4.38\end{center}
+Lemma 1: If $\vec{v} \in (W_1 \cap W_2) + (W_1 \cap W_3)$ then we can always find exactly one vector in $(W_1 \cap W_2)$ and exactly one vector in $(W_1 \cap W_3)$.\\\\
+%
+Proof:  Assume that $\vec{v}$ is a linear combination of multiple vectors from $(W_1 \cap W_2)$. $(W_1 \cap W_2)$ is the intersection of two subspaces and is therefore a subspace itself, so it is closed under linear combinations. It follows that these multiple vectors must have their linear combination in $(W_1 \cap W_2)$ as one vector. The same holds for  $(W_1 \cap W_3)$.\hfill QED.\\
+
+\noindent If $\vec{v} \in (W_1 \cap W_2) + (W_1 \cap W_3)$ then $\vec{v}$  is a linear combination of two vectors: $\vec{v_{12}} \in (W_1 \cap W_2)$ and $\vec{v_{13}} \in (W_1 \cap W_3)$ by Lemma 1. So $\vec{v} \in W_1$ because it is a linear combination of two vectors both of which are in $W_1$. At the same time, $\vec{v}$ is always a linear combination of a vector in $W_2$ or a vector in $W_3$, so  $\vec{v} \in (W_1 + W_3)$. Since $\vec{v}$ is both aforementioned sets,  it is also in their intesection, so $\vec{v} \in (W_1) \cap (W_2 + W_3)$.\hfill QED.\\
+
+\noindent The inclusion does not reverse, as a counter-example take $W1= \left(x,x,0\right) $, $W2= \left(x,0,0\right)  $ and $W3= \left(0,y,0\right)  $.\\ $(W_1 \cap W_2) + (W_1 \cap W_3) =  \left(0,0,0\right) $, but $(W_1) \cap (W_2 + W_3) = \left(x,x,0\right) \cap \left(x,y,0\right) = \left(x,x,0\right)$.
+
+
+%%%%%%
+\end{document}
