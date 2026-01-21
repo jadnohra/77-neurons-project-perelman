@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh workflow run:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
